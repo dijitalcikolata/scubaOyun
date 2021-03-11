@@ -13,6 +13,10 @@
 		436F611F25F811060030D40B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436F611D25F811060030D40B /* Main.storyboard */; };
 		436F612125F811080030D40B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 436F612025F811080030D40B /* Assets.xcassets */; };
 		436F612425F811080030D40B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 436F612225F811080030D40B /* LaunchScreen.storyboard */; };
+		436F612D25F8132E0030D40B /* DBHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F612C25F8132E0030D40B /* DBHandler.swift */; };
+		436F613325F813B20030D40B /* scubaTumSorular.db in Resources */ = {isa = PBXBuildFile; fileRef = 436F613225F813B20030D40B /* scubaTumSorular.db */; };
+		436F613A25F82B820030D40B /* secimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F613925F82B820030D40B /* secimViewController.swift */; };
+		436F613E25F83A6E0030D40B /* Rastgele.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F613D25F83A6E0030D40B /* Rastgele.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		436F612025F811080030D40B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		436F612325F811080030D40B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		436F612525F811080030D40B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		436F612C25F8132E0030D40B /* DBHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBHandler.swift; sourceTree = "<group>"; };
+		436F613225F813B20030D40B /* scubaTumSorular.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = scubaTumSorular.db; sourceTree = "<group>"; };
+		436F613925F82B820030D40B /* secimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secimViewController.swift; sourceTree = "<group>"; };
+		436F613D25F83A6E0030D40B /* Rastgele.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rastgele.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,10 @@
 				436F612025F811080030D40B /* Assets.xcassets */,
 				436F612225F811080030D40B /* LaunchScreen.storyboard */,
 				436F612525F811080030D40B /* Info.plist */,
+				436F612C25F8132E0030D40B /* DBHandler.swift */,
+				436F613225F813B20030D40B /* scubaTumSorular.db */,
+				436F613925F82B820030D40B /* secimViewController.swift */,
+				436F613D25F83A6E0030D40B /* Rastgele.swift */,
 			);
 			path = scubaOyun;
 			sourceTree = "<group>";
@@ -127,6 +139,7 @@
 				436F612425F811080030D40B /* LaunchScreen.storyboard in Resources */,
 				436F612125F811080030D40B /* Assets.xcassets in Resources */,
 				436F611F25F811060030D40B /* Main.storyboard in Resources */,
+				436F613325F813B20030D40B /* scubaTumSorular.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +152,9 @@
 			files = (
 				436F611C25F811060030D40B /* ViewController.swift in Sources */,
 				436F611825F811060030D40B /* AppDelegate.swift in Sources */,
+				436F612D25F8132E0030D40B /* DBHandler.swift in Sources */,
+				436F613A25F82B820030D40B /* secimViewController.swift in Sources */,
+				436F613E25F83A6E0030D40B /* Rastgele.swift in Sources */,
 				436F611A25F811060030D40B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
