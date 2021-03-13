@@ -9,17 +9,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
     @IBOutlet weak var soruLbl: UILabel!
     @IBOutlet weak var cevapAbtn: UIButton!
     @IBOutlet weak var cevapBbtn: UIButton!
     @IBOutlet weak var cevapCbtn: UIButton!
     @IBOutlet weak var cevapDbtn: UIButton!
-
     @IBOutlet weak var sayimLbl: UILabel!
     @IBOutlet weak var cevapLbl: UILabel!
-   
-    
     @IBOutlet weak var naviBar: UINavigationBar!
+    
     
     var cevapNumarasi = 0
     var cevapID = 0
@@ -38,7 +37,7 @@ class ViewController: UIViewController {
     var cevapli = "A"
     var secilenButton = 1
     var puan = 0
-    //var sifirlansinMi = Bool()
+    var sifirlansinMi = Bool()
     
     var delegate:MyDataSendingDelegate?
     
@@ -79,8 +78,9 @@ class ViewController: UIViewController {
     @objc func countdownMethod() {
             if counter == 0 {
                 timer.invalidate()
+                sifirlansinMi = true
                 alertOlayi(baslik: "OPPPS!!", mesaj: "Puanınız : \(puan) \r Süre Doldu, Daha Hızlı Olmalısın.", buttonText: "Tekrar Dene")
-                //sifirlansinMi = true
+                
             
             } else {
             counter -= 1
@@ -120,24 +120,14 @@ class ViewController: UIViewController {
     
     func puanYazdir(){
         naviBar.topItem?.title = "\(puan)"
-        UserDefaults.standard.set(puan, forKey: "puanli")
+       
 
         
        
         
         
     }
-    func toplamPuanKaydet(){
-        
-       
-        if let x = UserDefaults.standard.object(forKey: "puanli") as? Int{
-            if puan >= x {
-                UserDefaults.standard.set(puan, forKey: "sakliScor")
-            }
-        }
-        
-        
-    }
+    
     func bekleGel(renk : UIColor, dogruMu : Bool){
         if secilenButton == 1 {cevapAbtn.backgroundColor = renk}
         if secilenButton == 2 {cevapBbtn.backgroundColor = renk}
@@ -165,6 +155,7 @@ class ViewController: UIViewController {
         if cevap == 4{cevapDbtn.backgroundColor = .blue}
         print("ikiyi bekledi")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
             self.oyunBitti()
         }
     
@@ -177,7 +168,7 @@ class ViewController: UIViewController {
         
         buttonAcKapat(acKapat: true)
         print("üçü bekledi")
-        toplamPuanKaydet()
+        
     }
     func buttonAcKapat(acKapat : Bool){
         cevapAbtn.isEnabled = acKapat
@@ -186,16 +177,17 @@ class ViewController: UIViewController {
         cevapDbtn.isEnabled = acKapat
     }
     func oyunBitti(){
-        
+        sifirlansinMi = true
         alertOlayi(baslik: "Yanlış!", mesaj: "Puanınız : \(puan) \r Tekrar Denemelisin", buttonText: "TEKRAR DENE")
-        //sifirlansinMi = true
+        
         
     }
     
     func puanGonder(){
         if self.delegate != nil {
-           let sendText = String(puan)
-           self.delegate?.sendDataToFirstViewController(puanim: sendText)
+           let sendText = puan
+            let sifir = sifirlansinMi
+            self.delegate?.sendDataToFirstViewController(puanim: sendText, sifirMi : sifir)
            dismiss(animated: true, completion: nil) //for close this view
         }
         
@@ -241,7 +233,7 @@ class ViewController: UIViewController {
             cevapID += 1
     
         }else{
-            //sifirlansinMi = false
+            sifirlansinMi = false
             alertOlayi(baslik: "GÜZEL!", mesaj: "Puanınız : \(puan) \r Haydi Devam Edelim.", buttonText: "DEVAM")
             
         }
@@ -260,17 +252,10 @@ class ViewController: UIViewController {
         }))
         self.present(alert, animated: true)
     }
-  /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-             
-             if segue.destination is secimViewController{
-                let vc = segue.destination as? secimViewController
-                vc?.sifirla = sifirlansinMi
-                
-             }
-    }
+  
     
-    */
+    
+    
     
     
 }
@@ -280,5 +265,5 @@ class ViewController: UIViewController {
 
 
 protocol MyDataSendingDelegate {
-   func sendDataToFirstViewController(puanim: String)
+   func sendDataToFirstViewController(puanim: Int, sifirMi : Bool)
 }

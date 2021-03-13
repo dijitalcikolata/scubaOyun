@@ -26,20 +26,31 @@ class secimViewController: UIViewController, MyDataSendingDelegate {
     var tabloGiris = "birYildiz"
     var soruSayi = 1
     var soruBank = 1
-    var kacSoruOlsun = 3
-    //var sifirla = Bool ()
-    var sik = 0
+    var kacSoruOlsun = 1
+    var sifirla = true
     
     
+    var puan = Int()
+    //var sik = 0
+    
+    let rastgele = rastgeleSayi()
     
     
     
     override func viewDidAppear(_ animated: Bool) {
-        if let x = UserDefaults.standard.object(forKey: "sakliScor"){
-            enYuksekScor.text = "\(x)"
+      
+        enYuksek()
+        
+        if birYildizBtn.isHidden == true && geceBtn.isHidden == true && hastaliklarBtn.isHidden == true && havaBtn.isHidden == true && ilkyardimBtn.isHidden == true && nitrojenBtn.isHidden == true && planlamaBtn.isHidden == true {
+            
+            sifirla = true
+            butonGorunur()
+            alertOlayi(baslik: "BİTTİ", mesaj: "Çok iyiydin.  \r Toplam puanın : \(puan)", buttonText: "Tekrar")
+            
+            
+            
         }
         
-       
         
     }
     
@@ -48,28 +59,64 @@ class secimViewController: UIViewController, MyDataSendingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+      
+        //birYildizBtn.isHidden = true
+       enYuksek()
        
-       /*
-        if sifirla == false{
-            sik = Int(scorLbl.text!)!
-        }
-        
-       */
+      
         
     }
     
     
+    func enYuksek(){
+        if sifirla == true {
+            
+        
+            if let sakli = UserDefaults.standard.object(forKey: "sakliScor") as? Int{
+                    if puan >= sakli {
+                        UserDefaults.standard.set(puan, forKey: "sakliScor")
+                    }
+                }
+        
+            
+            
+            butonGorunur()
+            
+            
+        }else{
+            enYuksekScor.text = ""
+            
+            
+            
+            
+        }
+
+    }
+    
+
+    func butonGorunur(){
+        if let xx = UserDefaults.standard.object(forKey: "sakliScor") as? Int{
+            enYuksekScor.text = "\(xx)"
+            }
+        birYildizBtn.isHidden = false
+        geceBtn.isHidden = false
+        hastaliklarBtn.isHidden = false
+        havaBtn.isHidden = false
+        ilkyardimBtn.isHidden = false
+        nitrojenBtn.isHidden = false
+        planlamaBtn.isHidden = false
+    }
+    
 
     @IBAction func soruTabloSec(_ sender: UIButton) {
         
-        if sender.tag == 1{konuSec(tablo: "birYildiz", soru: kacSoruOlsun, bank: 56)}
-        if sender.tag == 2{konuSec(tablo: "gece", soru: kacSoruOlsun, bank: 19)}
-        if sender.tag == 3{konuSec(tablo: "hastaliklar", soru: kacSoruOlsun, bank: 51)}
-        if sender.tag == 4{konuSec(tablo: "hava", soru: kacSoruOlsun, bank: 17)}
-        if sender.tag == 5{konuSec(tablo: "ilkyardim", soru: kacSoruOlsun, bank: 17)}
-        if sender.tag == 6{konuSec(tablo: "nitrojen", soru: kacSoruOlsun, bank: 26)}
-        if sender.tag == 7{konuSec(tablo: "planlama", soru: kacSoruOlsun, bank: 14)}
+        if sender.tag == 1{konuSec(tablo: "birYildiz", soru: kacSoruOlsun, bank: 56);birYildizBtn.isHidden = true}
+        if sender.tag == 2{konuSec(tablo: "gece", soru: kacSoruOlsun, bank: 19);geceBtn.isHidden = true}
+        if sender.tag == 3{konuSec(tablo: "hastaliklar", soru: kacSoruOlsun, bank: 51);hastaliklarBtn.isHidden = true}
+        if sender.tag == 4{konuSec(tablo: "hava", soru: kacSoruOlsun, bank: 17);havaBtn.isHidden = true}
+        if sender.tag == 5{konuSec(tablo: "ilkyardim", soru: kacSoruOlsun, bank: 17);ilkyardimBtn.isHidden = true}
+        if sender.tag == 6{konuSec(tablo: "nitrojen", soru: kacSoruOlsun, bank: 26);nitrojenBtn.isHidden = true}
+        if sender.tag == 7{konuSec(tablo: "planlama", soru: kacSoruOlsun, bank: 14);planlamaBtn.isHidden = true}
         
         performSegue(withIdentifier: "gitSorular", sender: self)
     }
@@ -94,20 +141,40 @@ class secimViewController: UIViewController, MyDataSendingDelegate {
                 vc?.tabloGir = tabloGiris
                 vc?.SoruBankasi = soruBank
                 vc?.soruSayisi = soruSayi
-                vc?.puan = sik
                 
+                if sifirla == true {
+                    vc?.puan = 0
+                }else{
+                    vc?.puan = Int(scorLbl.text!)!
+                }
                 vc?.delegate = self
              }
     }
     
     
     
-    func sendDataToFirstViewController(puanim: String) {
+    func sendDataToFirstViewController(puanim: Int, sifirMi : Bool) {
       
-            scorLbl.text = puanim
-      
-        //enYuksekScor = puanim
+        scorLbl.text = "\(puanim)"
+        sifirla = sifirMi
+        puan = puanim
+        UserDefaults.standard.set(puan, forKey: "puan")
+        print(sifirMi)
+        
+        
     }
+    
+    
+    func alertOlayi(baslik : String, mesaj : String, buttonText : String){
+
+
+        let alert = UIAlertController(title: baslik, message: mesaj, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { (alertAction) -> Void in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true)
+    }
+    
     
     
 }

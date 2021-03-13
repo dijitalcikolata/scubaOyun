@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class rastgeleSayi {
@@ -31,6 +32,12 @@ class rastgeleSayi {
     
         return rastgeleDizi
     }
+    
+    
+    
+    
+    
+    
     
     
 }
