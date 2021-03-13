@@ -7,10 +7,9 @@
 
 import UIKit
 
-class secimViewController: UIViewController {
+class secimViewController: UIViewController, MyDataSendingDelegate {
+   
 
-    
-    var kacSoruOlsun = 3
     
     @IBOutlet weak var birYildizBtn: UIButton!
     @IBOutlet weak var geceBtn: UIButton!
@@ -19,14 +18,30 @@ class secimViewController: UIViewController {
     @IBOutlet weak var ilkyardimBtn: UIButton!
     @IBOutlet weak var nitrojenBtn: UIButton!
     @IBOutlet weak var planlamaBtn: UIButton!
+    @IBOutlet weak var scorLbl: UILabel!
+    @IBOutlet weak var enYuksekScor: UILabel!
     
     
     
     var tabloGiris = "birYildiz"
     var soruSayi = 1
     var soruBank = 1
+    var kacSoruOlsun = 3
+    //var sifirla = Bool ()
+    var sik = 0
     
-   
+    
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let x = UserDefaults.standard.object(forKey: "sakliScor"){
+            enYuksekScor.text = "\(x)"
+        }
+        
+       
+        
+    }
     
     
     
@@ -35,14 +50,15 @@ class secimViewController: UIViewController {
 
         
        
+       /*
+        if sifirla == false{
+            sik = Int(scorLbl.text!)!
+        }
         
-        
-        
-        
-        
-       
+       */
         
     }
+    
     
 
     @IBAction func soruTabloSec(_ sender: UIButton) {
@@ -70,12 +86,28 @@ class secimViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
              
+        
+        
+        
              if segue.destination is ViewController{
                 let vc = segue.destination as? ViewController
                 vc?.tabloGir = tabloGiris
                 vc?.SoruBankasi = soruBank
                 vc?.soruSayisi = soruSayi
+                vc?.puan = sik
+                
+                vc?.delegate = self
              }
     }
+    
+    
+    
+    func sendDataToFirstViewController(puanim: String) {
+      
+            scorLbl.text = puanim
+      
+        //enYuksekScor = puanim
+    }
+    
     
 }

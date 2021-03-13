@@ -31,7 +31,7 @@ class Databasehandler {
           
           if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
               while sqlite3_step(queryStatement) == SQLITE_ROW {
-               let id = sqlite3_column_int(queryStatement, 0)
+               //let id = sqlite3_column_int(queryStatement, 0)
                let soru = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
                 let cevapA = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 let cevapB = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))

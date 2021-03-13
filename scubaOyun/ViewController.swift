@@ -19,8 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cevapLbl: UILabel!
    
     
-    
-    
+    @IBOutlet weak var naviBar: UINavigationBar!
     
     var cevapNumarasi = 0
     var cevapID = 0
@@ -28,7 +27,6 @@ class ViewController: UIViewController {
     var tabloGir = ""
     var soruSayisi = 1
     var SoruBankasi = 2
-    var puan = 0
     var soruDizi = [Int]()
     
     let rg = rastgeleSayi()
@@ -39,15 +37,20 @@ class ViewController: UIViewController {
     var cevap = 1
     var cevapli = "A"
     var secilenButton = 1
+    var puan = 0
+    //var sifirlansinMi = Bool()
     
+    var delegate:MyDataSendingDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
       
+        self.navigationItem.setHidesBackButton(true, animated: true)
         //
         sayim()
         //
         
+        puanYazdir()
         
         self.title = "\(tabloGir)"
        
@@ -73,12 +76,12 @@ class ViewController: UIViewController {
 
     }
     
-    
     @objc func countdownMethod() {
             if counter == 0 {
                 timer.invalidate()
-                alertOlayi(baslik: "OPPPS!!", mesaj: "Süre Doldu, Daha Hızlı Olmalısın.", buttonText: "Tekrar Dene")
-                
+                alertOlayi(baslik: "OPPPS!!", mesaj: "Puanınız : \(puan) \r Süre Doldu, Daha Hızlı Olmalısın.", buttonText: "Tekrar Dene")
+                //sifirlansinMi = true
+            
             } else {
             counter -= 1
             sayimLbl.text = String(counter)
@@ -88,9 +91,6 @@ class ViewController: UIViewController {
         }
 
    
-    
-    
-    
     @IBAction func cavapSecim(_ sender: UIButton) {
         secilenButton = sender.tag
         if secilenButton == 1 {cevapAbtn.backgroundColor = .green}
@@ -118,8 +118,26 @@ class ViewController: UIViewController {
     }
     
     
-    
-    
+    func puanYazdir(){
+        naviBar.topItem?.title = "\(puan)"
+        UserDefaults.standard.set(puan, forKey: "puanli")
+
+        
+       
+        
+        
+    }
+    func toplamPuanKaydet(){
+        
+       
+        if let x = UserDefaults.standard.object(forKey: "puanli") as? Int{
+            if puan >= x {
+                UserDefaults.standard.set(puan, forKey: "sakliScor")
+            }
+        }
+        
+        
+    }
     func bekleGel(renk : UIColor, dogruMu : Bool){
         if secilenButton == 1 {cevapAbtn.backgroundColor = renk}
         if secilenButton == 2 {cevapBbtn.backgroundColor = renk}
@@ -153,10 +171,13 @@ class ViewController: UIViewController {
         
     }
     func ucuncuBekleme() {///////////////////////////////
+        puan += Int(sayimLbl.text!)!
+        puanYazdir()
         soruGetir()
         
         buttonAcKapat(acKapat: true)
         print("üçü bekledi")
+        toplamPuanKaydet()
     }
     func buttonAcKapat(acKapat : Bool){
         cevapAbtn.isEnabled = acKapat
@@ -166,9 +187,20 @@ class ViewController: UIViewController {
     }
     func oyunBitti(){
         
-        alertOlayi(baslik: "Yanlış!", mesaj: "Tekrar Denemelisin", buttonText: "TEKRAR DENE")
+        alertOlayi(baslik: "Yanlış!", mesaj: "Puanınız : \(puan) \r Tekrar Denemelisin", buttonText: "TEKRAR DENE")
+        //sifirlansinMi = true
         
     }
+    
+    func puanGonder(){
+        if self.delegate != nil {
+           let sendText = String(puan)
+           self.delegate?.sendDataToFirstViewController(puanim: sendText)
+           dismiss(animated: true, completion: nil) //for close this view
+        }
+        
+    }
+    
     
     func soruGetir(){
         
@@ -209,31 +241,44 @@ class ViewController: UIViewController {
             cevapID += 1
     
         }else{
+            //sifirlansinMi = false
+            alertOlayi(baslik: "GÜZEL!", mesaj: "Puanınız : \(puan) \r Haydi Devam Edelim.", buttonText: "DEVAM")
             
-            alertOlayi(baslik: "GÜZEL!", mesaj: "Haydi Devam Edelim.", buttonText: "DEVAM")
         }
     }
     
+    
+    
     func alertOlayi(baslik : String, mesaj : String, buttonText : String){
-        
-        
-        
+
+        puanGonder()
         soruDizi.removeAll()
-        
+
         let alert = UIAlertController(title: baslik, message: mesaj, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { (alertAction) -> Void in
             self.navigationController?.popViewController(animated: true)
         }))
-        /*
-        alert.addAction(UIAlertAction(title: "Tamam", style: .cancel, handler: { (alertAction) -> Void in
-            self.performSegue(withIdentifier: "boklu", sender: self)
-        }))
-        */
         self.present(alert, animated: true)
     }
-  
-
+  /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+             
+             if segue.destination is secimViewController{
+                let vc = segue.destination as? secimViewController
+                vc?.sifirla = sifirlansinMi
+                
+             }
+    }
+    
+    */
     
     
 }
 
+
+
+
+
+protocol MyDataSendingDelegate {
+   func sendDataToFirstViewController(puanim: String)
+}
