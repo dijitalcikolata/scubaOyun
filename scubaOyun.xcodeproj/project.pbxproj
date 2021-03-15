@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		436A1FD22600055F008D4F7D /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436A1FD02600055F008D4F7D /* ProgressBar.swift */; };
+		436A1FD32600055F008D4F7D /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436A1FD12600055F008D4F7D /* Timer.swift */; };
 		436F611825F811060030D40B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F611725F811060030D40B /* AppDelegate.swift */; };
 		436F611A25F811060030D40B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F611925F811060030D40B /* SceneDelegate.swift */; };
 		436F611C25F811060030D40B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F611B25F811060030D40B /* ViewController.swift */; };
@@ -17,9 +19,12 @@
 		436F613325F813B20030D40B /* scubaTumSorular.db in Resources */ = {isa = PBXBuildFile; fileRef = 436F613225F813B20030D40B /* scubaTumSorular.db */; };
 		436F613A25F82B820030D40B /* secimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F613925F82B820030D40B /* secimViewController.swift */; };
 		436F613E25F83A6E0030D40B /* Rastgele.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436F613D25F83A6E0030D40B /* Rastgele.swift */; };
+		4399576225FD6D2800E145A5 /* ButtonAnim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399576125FD6D2800E145A5 /* ButtonAnim.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		436A1FD02600055F008D4F7D /* ProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		436A1FD12600055F008D4F7D /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		436F611425F811060030D40B /* scubaOyun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scubaOyun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		436F611725F811060030D40B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		436F611925F811060030D40B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +37,7 @@
 		436F613225F813B20030D40B /* scubaTumSorular.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = scubaTumSorular.db; sourceTree = "<group>"; };
 		436F613925F82B820030D40B /* secimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secimViewController.swift; sourceTree = "<group>"; };
 		436F613D25F83A6E0030D40B /* Rastgele.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rastgele.swift; sourceTree = "<group>"; };
+		4399576125FD6D2800E145A5 /* ButtonAnim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonAnim.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,9 @@
 				436F613225F813B20030D40B /* scubaTumSorular.db */,
 				436F613925F82B820030D40B /* secimViewController.swift */,
 				436F613D25F83A6E0030D40B /* Rastgele.swift */,
+				4399576125FD6D2800E145A5 /* ButtonAnim.swift */,
+				436A1FD02600055F008D4F7D /* ProgressBar.swift */,
+				436A1FD12600055F008D4F7D /* Timer.swift */,
 			);
 			path = scubaOyun;
 			sourceTree = "<group>";
@@ -154,7 +163,10 @@
 				436F611825F811060030D40B /* AppDelegate.swift in Sources */,
 				436F612D25F8132E0030D40B /* DBHandler.swift in Sources */,
 				436F613A25F82B820030D40B /* secimViewController.swift in Sources */,
+				4399576225FD6D2800E145A5 /* ButtonAnim.swift in Sources */,
 				436F613E25F83A6E0030D40B /* Rastgele.swift in Sources */,
+				436A1FD32600055F008D4F7D /* Timer.swift in Sources */,
+				436A1FD22600055F008D4F7D /* ProgressBar.swift in Sources */,
 				436F611A25F811060030D40B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

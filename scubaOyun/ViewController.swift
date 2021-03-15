@@ -19,6 +19,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var cevapLbl: UILabel!
     @IBOutlet weak var naviBar: UINavigationBar!
     
+    @IBOutlet weak var progressBar1: ProgressBar!
+    
+    
+    var countFired: CGFloat = 0
     
     var cevapNumarasi = 0
     var cevapID = 0
@@ -31,8 +35,8 @@ class ViewController: UIViewController {
     let rg = rastgeleSayi()
     
     var timer = Timer()
-    let sure = 16
-    var counter : Int = 16
+    let sure = 50
+    var counter : Int = 50
     var cevap = 1
     var cevapli = "A"
     var secilenButton = 1
@@ -46,9 +50,45 @@ class ViewController: UIViewController {
       
         self.navigationItem.setHidesBackButton(true, animated: true)
         //
-        sayim()
+        sayimBasla(gorunum: false, sayayimMi: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.sayimBasla(gorunum: true, sayayimMi: true)
+        }
+        
         //
         
+        
+        cevapAbtn.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 2.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.cevapAbtn.center.x = self.view.frame.width / 50
+        },completion: nil)
+        cevapBbtn.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 2.5, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.cevapBbtn.center.x = self.view.frame.width / 50
+        },completion: nil)
+        cevapCbtn.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 3.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.cevapCbtn.center.x = self.view.frame.width / 50
+        },completion: nil)
+        cevapDbtn.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 3.5, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.cevapDbtn.center.x = self.view.frame.width / 50
+        },completion: nil)
+        
+        soruLbl.center.x = self.view.frame.width + 50
+        UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
+            self.soruLbl.center.x = self.view.frame.width / 50
+        },completion: nil)
+        /*
+        UIProgressView.animate(withDuration: 2.0, animations: {self.progressBar1.transform = CGAffineTransform.identity.scaledBy(x: 0.6, y: 0.6)}, completion: {(finish) in
+            UIView.animate(withDuration: 0.20, animations: {
+                self.progressBar1.transform = CGAffineTransform.identity
+            })
+        })
+        */
+        
+        
+        //
         puanYazdir()
         
         self.title = "\(tabloGir)"
@@ -59,9 +99,24 @@ class ViewController: UIViewController {
         print(tabloGir)
         
         soruGetir()
-        
+        buttonStyle()
         
     }
+    func sayimBasla(gorunum : Bool, sayayimMi: Bool){
+        cevapAbtn.isEnabled = gorunum
+        cevapBbtn.isEnabled = gorunum
+        cevapCbtn.isEnabled = gorunum
+        cevapDbtn.isEnabled = gorunum
+        if sayayimMi == true{sayim()}
+    }
+    func buttonStyle(){
+        
+        cevapAbtn.layer.cornerRadius = 8
+        cevapBbtn.layer.cornerRadius = 8
+        cevapCbtn.layer.cornerRadius = 8
+        cevapDbtn.layer.cornerRadius = 8
+    }
+    
     func sayim(){
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countdownMethod), userInfo: nil, repeats: true)
                 sayimLbl.text = String(counter)
@@ -71,7 +126,7 @@ class ViewController: UIViewController {
                 counter = sure
                 sayimLbl.text = String(counter)
 
-        sayim()
+        //sayim()
 
     }
     
@@ -85,13 +140,14 @@ class ViewController: UIViewController {
             } else {
             counter -= 1
             sayimLbl.text = String(counter)
-
+                self.progressBar1.progress = (CGFloat(truncating: NSNumber(value: counter)) / 50)
             }
             
         }
 
    
     @IBAction func cavapSecim(_ sender: UIButton) {
+        sender.shake()
         secilenButton = sender.tag
         if secilenButton == 1 {cevapAbtn.backgroundColor = .green}
         if secilenButton == 2 {cevapBbtn.backgroundColor = .green}
@@ -149,10 +205,10 @@ class ViewController: UIViewController {
     }
     func ikinciBekleme(){
         
-        if cevap == 1{cevapAbtn.backgroundColor = .blue}
-        if cevap == 2{cevapBbtn.backgroundColor = .blue}
-        if cevap == 3{cevapCbtn.backgroundColor = .blue}
-        if cevap == 4{cevapDbtn.backgroundColor = .blue}
+        if cevap == 1{cevapAbtn.backgroundColor = .blue;self.cevapAbtn.flash()}
+        if cevap == 2{cevapBbtn.backgroundColor = .blue;self.cevapBbtn.flash()}
+        if cevap == 3{cevapCbtn.backgroundColor = .blue;self.cevapCbtn.flash()}
+        if cevap == 4{cevapDbtn.backgroundColor = .blue;self.cevapDbtn.flash()}
         print("ikiyi bekledi")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             
@@ -255,7 +311,20 @@ class ViewController: UIViewController {
   
     
     
-    
+    private func showCase() {
+    Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
+      self.countFired += 1
+      
+      DispatchQueue.main.async {
+        self.progressBar1.progress = min(CGFloat(0.04 * self.countFired), 1)
+        
+        
+        if self.progressBar1.progress == 1 {
+          timer.invalidate()
+        }
+      }
+    }
+  }
     
     
 }
