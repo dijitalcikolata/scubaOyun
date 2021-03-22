@@ -46,8 +46,14 @@ class ViewController: UIViewController {
     var delegate:MyDataSendingDelegate?
     
     override func viewDidLoad() {
+        setGradientBackground()
         super.viewDidLoad()
-      
+      //*
+        
+       
+         
+        //*/
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
         //
         sayimBasla(gorunum: false, sayayimMi: false)
@@ -101,6 +107,20 @@ class ViewController: UIViewController {
         soruGetir()
         buttonStyle()
         
+        
+        
+    }
+    func setGradientBackground() {
+        
+        let colorTop =  UIColor(red: 255.0/255.0, green: 0.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0).cgColor
+                    
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [colorTop, colorBottom]
+        gradientLayer.locations = [0.0, 1.0]
+        gradientLayer.frame = self.view.bounds
+                
+        self.view.layer.insertSublayer(gradientLayer, at:0)
     }
     func sayimBasla(gorunum : Bool, sayayimMi: Bool){
         cevapAbtn.isEnabled = gorunum

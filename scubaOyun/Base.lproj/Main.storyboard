@@ -174,117 +174,150 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffn-4j-pjh">
-                                <rect key="frame" x="20" y="269" width="169" height="65"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffn-4j-pjh">
+                                <rect key="frame" x="20" y="185" width="120" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="Ukb-sk-sf3"/>
-                                    <constraint firstAttribute="width" constant="169" id="mkT-Kl-A91"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="5X4-id-YTT"/>
+                                    <constraint firstAttribute="height" constant="45" id="9T1-X2-XM5"/>
+                                    <constraint firstAttribute="width" constant="120" id="BIX-F7-KE7"/>
                                 </constraints>
-                                <state key="normal" title="GECE"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="GECE">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="k4h-rC-yiP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEe-eM-iED">
-                                <rect key="frame" x="225" y="269" width="169" height="65"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                <state key="normal" title="HASTALIKLAR"/>
-                                <connections>
-                                    <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="wpX-4R-d6m"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAJ-Wk-Ahg">
-                                <rect key="frame" x="20" y="353" width="169" height="65"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAJ-Wk-Ahg">
+                                <rect key="frame" x="20" y="250" width="120" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="mau-42-SLH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="9rZ-DG-TWS"/>
+                                    <constraint firstAttribute="width" constant="120" id="WHD-kq-JFU"/>
+                                    <constraint firstAttribute="height" constant="45" id="gb2-ev-6i4"/>
                                 </constraints>
-                                <state key="normal" title="HAVA"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="HAVA">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="ETu-bW-LR6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZz-0b-75W">
-                                <rect key="frame" x="225" y="353" width="169" height="65"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                <state key="normal" title="İLK YARDIM"/>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZz-0b-75W">
+                                <rect key="frame" x="274" y="250" width="120" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="7ch-F9-UXn"/>
+                                    <constraint firstAttribute="height" constant="45" id="7zk-G8-TR2"/>
+                                    <constraint firstAttribute="width" constant="120" id="ALZ-Pw-9xe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="İLK YARDIM">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="X00-51-pfh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tk3-vK-sG7">
-                                <rect key="frame" x="20" y="185" width="374" height="65"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tk3-vK-sG7">
+                                <rect key="frame" x="20" y="100" width="374" height="65"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="yyJ-iW-WV7"/>
+                                    <constraint firstAttribute="height" constant="65" id="7BN-Ek-odh"/>
                                 </constraints>
-                                <state key="normal" title="1 YİLDİZ"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <state key="normal" title="1 Yıldız">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
                                 <connections>
                                     <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="8by-Wq-fXr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teG-TZ-zhx">
-                                <rect key="frame" x="20" y="437" width="169" height="30"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                <state key="normal" title="NİTROJEN"/>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="teG-TZ-zhx">
+                                <rect key="frame" x="20" y="315" width="120" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8Oc-6F-fvr"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="Llt-SR-4gA"/>
+                                    <constraint firstAttribute="height" constant="45" id="lJe-cg-Fkr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="NİTROJEN">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="FOL-Ny-FPI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-Yz-g9U">
-                                <rect key="frame" x="225" y="437" width="169" height="30"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                                <state key="normal" title="PLANLAMA"/>
+                            <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-Yz-g9U">
+                                <rect key="frame" x="274" y="315" width="120" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="5od-5L-Eec"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="I8E-xd-QZA"/>
+                                    <constraint firstAttribute="width" constant="120" id="ycI-Wn-Gfl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="PLANLAMA">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="13A-uf-hoA"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dS-kT-71A">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dS-kT-71A">
                                 <rect key="frame" x="20" y="726" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prk-LJ-7cP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prk-LJ-7cP">
                                 <rect key="frame" x="20" y="767" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEe-eM-iED">
+                                <rect key="frame" x="274" y="185" width="120" height="45"/>
+                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="7X9-so-giW"/>
+                                    <constraint firstAttribute="width" constant="120" id="jeG-ku-LPg"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="r8t-Td-4xQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="HASTALIKLAR">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="soruTabloSec:" destination="9UD-HP-tf5" eventType="touchUpInside" id="wpX-4R-d6m"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pk0-42-95l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="teG-TZ-zhx" firstAttribute="top" secondItem="nAJ-Wk-Ahg" secondAttribute="bottom" constant="19" id="1qa-Po-aKb"/>
-                            <constraint firstItem="hEe-eM-iED" firstAttribute="leading" secondItem="ffn-4j-pjh" secondAttribute="trailing" constant="36" id="4e6-K0-fW8"/>
-                            <constraint firstItem="EZz-0b-75W" firstAttribute="trailing" secondItem="Gkb-Yz-g9U" secondAttribute="trailing" id="8Wo-7b-RRN"/>
-                            <constraint firstItem="nAJ-Wk-Ahg" firstAttribute="leading" secondItem="teG-TZ-zhx" secondAttribute="leading" id="AGM-j1-3lR"/>
-                            <constraint firstItem="EZz-0b-75W" firstAttribute="leading" secondItem="Gkb-Yz-g9U" secondAttribute="leading" id="AXA-r5-loJ"/>
-                            <constraint firstItem="nAJ-Wk-Ahg" firstAttribute="trailing" secondItem="teG-TZ-zhx" secondAttribute="trailing" id="D0G-Cp-6Se"/>
-                            <constraint firstItem="Gkb-Yz-g9U" firstAttribute="trailing" secondItem="2dS-kT-71A" secondAttribute="trailing" id="Hrh-aT-XUn"/>
-                            <constraint firstItem="2dS-kT-71A" firstAttribute="leading" secondItem="Prk-LJ-7cP" secondAttribute="leading" id="I09-HR-pxC"/>
-                            <constraint firstItem="hEe-eM-iED" firstAttribute="trailing" secondItem="EZz-0b-75W" secondAttribute="trailing" id="JcB-qR-ErI"/>
-                            <constraint firstItem="nAJ-Wk-Ahg" firstAttribute="top" secondItem="EZz-0b-75W" secondAttribute="top" id="L9U-gE-bdV"/>
-                            <constraint firstItem="tk3-vK-sG7" firstAttribute="top" secondItem="Pk0-42-95l" secondAttribute="top" constant="185" id="Lnm-rk-NFc"/>
-                            <constraint firstItem="ffn-4j-pjh" firstAttribute="top" secondItem="tk3-vK-sG7" secondAttribute="bottom" constant="19" id="LwU-Gk-eI5"/>
-                            <constraint firstItem="teG-TZ-zhx" firstAttribute="baseline" secondItem="Gkb-Yz-g9U" secondAttribute="baseline" id="Mu6-ee-WFh"/>
-                            <constraint firstItem="hEe-eM-iED" firstAttribute="leading" secondItem="EZz-0b-75W" secondAttribute="leading" id="OLh-c4-tgO"/>
-                            <constraint firstItem="2dS-kT-71A" firstAttribute="trailing" secondItem="Prk-LJ-7cP" secondAttribute="trailing" id="QDs-Lh-QRg"/>
-                            <constraint firstItem="tk3-vK-sG7" firstAttribute="leading" secondItem="yT0-Lm-Fs1" secondAttribute="leadingMargin" id="QP1-Dk-bdR"/>
-                            <constraint firstItem="tk3-vK-sG7" firstAttribute="trailing" secondItem="hEe-eM-iED" secondAttribute="trailing" id="SVL-vB-LYu"/>
-                            <constraint firstItem="tk3-vK-sG7" firstAttribute="trailing" secondItem="yT0-Lm-Fs1" secondAttribute="trailingMargin" id="UMw-10-0OE"/>
-                            <constraint firstItem="ffn-4j-pjh" firstAttribute="baseline" secondItem="hEe-eM-iED" secondAttribute="firstBaseline" id="WPV-v2-ZVs"/>
-                            <constraint firstItem="ffn-4j-pjh" firstAttribute="trailing" secondItem="nAJ-Wk-Ahg" secondAttribute="trailing" id="d3x-0m-Pk7"/>
-                            <constraint firstItem="teG-TZ-zhx" firstAttribute="leading" secondItem="2dS-kT-71A" secondAttribute="leading" id="eyc-88-jqJ"/>
-                            <constraint firstItem="ffn-4j-pjh" firstAttribute="top" secondItem="hEe-eM-iED" secondAttribute="top" id="iHZ-hc-e5b"/>
-                            <constraint firstItem="Prk-LJ-7cP" firstAttribute="top" secondItem="2dS-kT-71A" secondAttribute="bottom" constant="20" id="oxF-sz-CQh"/>
-                            <constraint firstItem="nAJ-Wk-Ahg" firstAttribute="top" secondItem="ffn-4j-pjh" secondAttribute="bottom" constant="19" id="tE9-ds-HKE"/>
-                            <constraint firstItem="Pk0-42-95l" firstAttribute="bottom" secondItem="Prk-LJ-7cP" secondAttribute="bottom" constant="20" id="toX-UL-Ltx"/>
-                            <constraint firstItem="nAJ-Wk-Ahg" firstAttribute="baseline" secondItem="EZz-0b-75W" secondAttribute="firstBaseline" id="wMf-C8-VIr"/>
-                            <constraint firstItem="ffn-4j-pjh" firstAttribute="leading" secondItem="nAJ-Wk-Ahg" secondAttribute="leading" id="xyG-fB-7Da"/>
-                            <constraint firstItem="tk3-vK-sG7" firstAttribute="leading" secondItem="ffn-4j-pjh" secondAttribute="leading" id="ziK-OX-eg3"/>
+                            <constraint firstItem="Pk0-42-95l" firstAttribute="trailing" secondItem="Gkb-Yz-g9U" secondAttribute="trailing" constant="20" id="9do-2h-m82"/>
+                            <constraint firstItem="ffn-4j-pjh" firstAttribute="top" secondItem="tk3-vK-sG7" secondAttribute="bottom" constant="20" id="Bgf-q7-v7v"/>
+                            <constraint firstItem="tk3-vK-sG7" firstAttribute="leading" secondItem="Pk0-42-95l" secondAttribute="leading" constant="20" id="OZd-qh-bG1"/>
+                            <constraint firstItem="teG-TZ-zhx" firstAttribute="leading" secondItem="Pk0-42-95l" secondAttribute="leading" constant="20" id="Sda-01-KLP"/>
+                            <constraint firstItem="nAJ-Wk-Ahg" firstAttribute="leading" secondItem="Pk0-42-95l" secondAttribute="leading" constant="20" id="VlL-Co-jwk"/>
+                            <constraint firstItem="Pk0-42-95l" firstAttribute="trailing" secondItem="tk3-vK-sG7" secondAttribute="trailing" constant="20" id="ah3-j0-gmb"/>
+                            <constraint firstItem="tk3-vK-sG7" firstAttribute="top" secondItem="Pk0-42-95l" secondAttribute="top" constant="100" id="k0m-Tx-Q1g"/>
+                            <constraint firstItem="Gkb-Yz-g9U" firstAttribute="top" secondItem="EZz-0b-75W" secondAttribute="bottom" constant="20" id="kAY-gK-92q"/>
+                            <constraint firstItem="EZz-0b-75W" firstAttribute="top" secondItem="hEe-eM-iED" secondAttribute="bottom" constant="20" id="n4Q-3O-rSP"/>
+                            <constraint firstItem="hEe-eM-iED" firstAttribute="top" secondItem="tk3-vK-sG7" secondAttribute="bottom" constant="20" id="oUk-wX-Jpg"/>
+                            <constraint firstItem="teG-TZ-zhx" firstAttribute="top" secondItem="nAJ-Wk-Ahg" secondAttribute="bottom" constant="20" id="oyl-H8-sJ1"/>
+                            <constraint firstItem="nAJ-Wk-Ahg" firstAttribute="top" secondItem="ffn-4j-pjh" secondAttribute="bottom" constant="20" id="pnz-DI-6cy"/>
+                            <constraint firstItem="ffn-4j-pjh" firstAttribute="leading" secondItem="Pk0-42-95l" secondAttribute="leading" constant="20" id="rEn-x9-r7Q"/>
+                            <constraint firstItem="Pk0-42-95l" firstAttribute="trailing" secondItem="EZz-0b-75W" secondAttribute="trailing" constant="20" id="rrC-0b-AqX"/>
+                            <constraint firstItem="Pk0-42-95l" firstAttribute="trailing" secondItem="hEe-eM-iED" secondAttribute="trailing" constant="20" id="sDh-fM-eE0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dGL-kX-YI0"/>
@@ -325,9 +358,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="EBE-0u-Wbe"/>
         <segue reference="87d-xo-zNx"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
