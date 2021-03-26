@@ -8,7 +8,69 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var buyuyenView : UIView = {
+        let vie = UIView()
+        vie.translatesAutoresizingMaskIntoConstraints = false
+            return vie
+        }()
     
+    let logoImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "kuru2")
+       return theImageView
+    }()
+    let muratImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "murti")
+       return theImageView
+    }()
+    let hasirciImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "hasirci")
+       return theImageView
+    }()
+    let tamamImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "tamam")
+       return theImageView
+    }()
+    let hayirImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "hayir")
+       return theImageView
+    }()
+    let mukemmelImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "mukemmel")
+       return theImageView
+    }()
+    let oyunBittiImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "oyunBitti")
+       return theImageView
+    }()
+    let sureBittiImg: UIImageView = {
+        let theImageView = UIImageView()
+       theImageView.image = UIImage(named: "sureBitti")
+       return theImageView
+    }()
+    let tamamBtn: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("TAMAM", for: .normal)
+        btn.backgroundColor = UIColor.systemGray
+        return btn
+    }()
+    let puanGosterLbl: UILabel = {
+       let lbl = UILabel()
+        lbl.text = "0"
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
+    var timerHizli = Timer()
+    var say = 0
+    
+    let konumlar = Konumlar()
     
     @IBOutlet weak var soruLbl: UILabel!
     @IBOutlet weak var cevapAbtn: UIButton!
@@ -50,7 +112,38 @@ class ViewController: UIViewController {
         super.viewDidLoad()
       //*
         
-       
+        
+        view.addSubview(buyuyenView)
+        view.addSubview(logoImg)
+        view.addSubview(muratImg)
+        view.addSubview(hasirciImg)
+        view.addSubview(tamamImg)
+        view.addSubview(mukemmelImg)
+        view.addSubview(hayirImg)
+        view.addSubview(oyunBittiImg)
+        view.addSubview(sureBittiImg)
+        view.addSubview(tamamBtn)
+        view.addSubview(puanGosterLbl)
+        
+        let boyX = Int(UIScreen.main.bounds.width)
+        let boyY = Int(UIScreen.main.bounds.height)
+        
+        konumlar.konumAnim(gelenImg: logoImg, X: boyX/2 - 100, Y: 100, W: 200, H: 155, gorunurluk: 0)
+        konumlar.konumAnim(gelenImg: muratImg, X: 1000, Y: 255, W: 100, H: 25, gorunurluk: 1)
+        konumlar.konumAnim(gelenImg: hasirciImg, X: -500, Y: 280, W: 100, H: 25, gorunurluk: 1)
+        konumlar.konumAnim(gelenImg: tamamImg, X: boyX/2 - 125, Y: boyY - 275, W: 250, H: 275, gorunurluk: 0)
+        konumlar.konumAnim(gelenImg: hayirImg, X: boyX/2 - 125, Y: boyY - 275, W: 250, H: 275, gorunurluk: 0)
+        konumlar.konumAnim(gelenImg: mukemmelImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
+        konumlar.konumAnim(gelenImg: oyunBittiImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
+        konumlar.konumAnim(gelenImg: sureBittiImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
+        
+        
+        tamamBtn.alpha = 0
+        tamamBtn.anchor(top: puanGosterLbl.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: 0 , height: 30)
+    
+        tamamBtn.addTarget(self, action:  #selector(ViewController.tamamBtn(_:)), for: .touchUpInside)
+        puanGosterLbl.alpha = 0
+        puanGosterLbl.anchor(top: hasirciImg.bottomAnchor, bottom: tamamBtn.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 10, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: 0, height: 30)
          
         //*/
         
@@ -85,13 +178,8 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 1.0, delay: 00, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .allowAnimatedContent, animations: {
             self.soruLbl.center.x = self.view.frame.width / 50
         },completion: nil)
-        /*
-        UIProgressView.animate(withDuration: 2.0, animations: {self.progressBar1.transform = CGAffineTransform.identity.scaledBy(x: 0.6, y: 0.6)}, completion: {(finish) in
-            UIView.animate(withDuration: 0.20, animations: {
-                self.progressBar1.transform = CGAffineTransform.identity
-            })
-        })
-        */
+        
+        
         
         
         //
@@ -110,6 +198,25 @@ class ViewController: UIViewController {
         
         
     }
+    //*****
+    @objc func tamamBtn(_ sender : Any){
+      
+        konumlar.geriAnimasyonsonucImg(hayirImg: hayirImg, evetImg: tamamImg, logoImg: logoImg, muratImg: muratImg, hasirciImg: hasirciImg, buyuyenView: buyuyenView, tamamBtn: tamamBtn, mukemmelImg: mukemmelImg, oyunBitti: oyunBittiImg, sureBittiImg : sureBittiImg)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.navigationController?.popViewController(animated: true)
+            print("kapat kız")
+        }
+    }
+    
+    
+    func dogruYanlis(gelenSonucImg : UIImageView, gelenTextImg : UIImageView, gelenColor : UIColor){
+        konumlar.animasyonBasla(buyuyenView: buyuyenView, view: view)
+        konumlar.butonHareket(sonucImg: gelenSonucImg, sonucTextImg: gelenTextImg, logoImg: logoImg, muratImg: muratImg, hasirciImg: hasirciImg, buyuyenView : buyuyenView, color : gelenColor, tamamBtn : tamamBtn, puanGosterLbl: puanGosterLbl)
+        
+        
+    }
+    //*****
+    
     func setGradientBackground() {
         
         let colorTop =  UIColor(red: 255.0/255.0, green: 0.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor
@@ -154,8 +261,11 @@ class ViewController: UIViewController {
             if counter == 0 {
                 timer.invalidate()
                 sifirlansinMi = true
-                alertOlayi(baslik: "OPPPS!!", mesaj: "Puanınız : \(puan) \r Süre Doldu, Daha Hızlı Olmalısın.", buttonText: "Tekrar Dene")
-                
+                alertOlayi()
+                //alertOlayi(baslik: "OPPPS!!", mesaj: "Puanınız : \(puan) \r Süre Doldu, Daha Hızlı Olmalısın.", buttonText: "Tekrar Dene")
+                //puanGosterLbl.text = "\(puan)"
+                hizliSay()
+                dogruYanlis(gelenSonucImg: hayirImg, gelenTextImg: sureBittiImg, gelenColor: .systemPink)
             
             } else {
             counter -= 1
@@ -254,8 +364,11 @@ class ViewController: UIViewController {
     }
     func oyunBitti(){
         sifirlansinMi = true
-        alertOlayi(baslik: "Yanlış!", mesaj: "Puanınız : \(puan) \r Tekrar Denemelisin", buttonText: "TEKRAR DENE")
-        
+        alertOlayi()
+        //alertOlayi(baslik: "Yanlış!", mesaj: "Puanınız : \(puan) \r Tekrar Denemelisin", buttonText: "TEKRAR DENE")
+        //puanGosterLbl.text = "\(puan)"
+        hizliSay()
+        dogruYanlis(gelenSonucImg: hayirImg, gelenTextImg: oyunBittiImg, gelenColor: .systemPink)
         
     }
     
@@ -269,6 +382,25 @@ class ViewController: UIViewController {
         
     }
     
+    
+    func hizliSay(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
+            self.timerHizli = Timer.scheduledTimer(timeInterval: 0.01, target:self, selector:#selector(self.prozessTimer), userInfo: nil, repeats: true)
+        }
+        
+    }
+    
+    @objc func prozessTimer() {
+        if say != puan{
+        say += 1
+            puanGosterLbl.text = "\(say)"
+            print("\(say)")
+        }else{
+            timerHizli.invalidate()
+        }
+    }
     
     func soruGetir(){
         
@@ -310,24 +442,29 @@ class ViewController: UIViewController {
     
         }else{
             sifirlansinMi = false
-            alertOlayi(baslik: "GÜZEL!", mesaj: "Puanınız : \(puan) \r Haydi Devam Edelim.", buttonText: "DEVAM")
-            
+            //alertOlayi(baslik: "GÜZEL!", mesaj: "Puanınız : \(puan) \r Haydi Devam Edelim.", buttonText: "DEVAM")
+            alertOlayi()
+            //puanGosterLbl.text = "\(puan)"
+            hizliSay()
+            dogruYanlis(gelenSonucImg: tamamImg, gelenTextImg: mukemmelImg, gelenColor: .systemBlue)
         }
     }
     
     
     
-    func alertOlayi(baslik : String, mesaj : String, buttonText : String){
+    func alertOlayi(){
 
         puanGonder()
         soruDizi.removeAll()
-
+        
+/*
         let alert = UIAlertController(title: baslik, message: mesaj, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: buttonText, style: .default, handler: { (alertAction) -> Void in
             self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true)
-    }
+ */
+ }
   
     
     
