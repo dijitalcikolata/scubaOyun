@@ -90,16 +90,8 @@
 				436A1FD12600055F008D4F7D /* Timer.swift */,
 				438BDD4D26092EA400EF0657 /* Konum.swift */,
 				438BDD4E26092EA400EF0657 /* ButonKonumlar.swift */,
-				438BDD5226092EAF00EF0657 /* anim */,
 			);
 			path = scubaOyun;
-			sourceTree = "<group>";
-		};
-		438BDD5226092EAF00EF0657 /* anim */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = anim;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

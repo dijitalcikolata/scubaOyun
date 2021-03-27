@@ -8,6 +8,51 @@
 import Foundation
 import UIKit
 
+class Konumlar {
+    
+    func konuKonum(view: UIView, konu1Btn : UIButton, konu2Btn : UIButton, konu3Btn : UIButton, konu4Btn : UIButton, konu5Btn : UIButton, konu6Btn : UIButton, konu7Btn : UIButton){
+        
+        view.addSubview(konu1Btn)
+        view.addSubview(konu2Btn)
+        view.addSubview(konu3Btn)
+        view.addSubview(konu4Btn)
+        view.addSubview(konu5Btn)
+        view.addSubview(konu6Btn)
+        view.addSubview(konu7Btn)
+        
+        konu1Btn.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 200, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: 0, height: 50)
+        
+        konu2Btn.anchor(top: konu1Btn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: konu3Btn.leadingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: (UIScreen.main.bounds.width - 60)/2, height: 50)
+        konu3Btn.anchor(top: konu1Btn.bottomAnchor, bottom: nil, leading: konu2Btn.trailingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: (UIScreen.main.bounds.width - 60)/2, height: 50)
+        
+        konu4Btn.anchor(top: konu2Btn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: konu3Btn.leadingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: (UIScreen.main.bounds.width - 60)/2, height: 50)
+        konu5Btn.anchor(top: konu2Btn.bottomAnchor, bottom: nil, leading: konu4Btn.trailingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: (UIScreen.main.bounds.width - 60)/2, height: 50)
+        
+        konu6Btn.anchor(top: konu4Btn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: konu3Btn.leadingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: (UIScreen.main.bounds.width - 60)/2, height: 50)
+        konu7Btn.anchor(top: konu4Btn.bottomAnchor, bottom: nil, leading: konu6Btn.trailingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: (UIScreen.main.bounds.width - 60)/2, height: 50)
+        
+        
+    }
+    
+    func kategoriKonum(view: UIView, birYildizBtn: UIButton, ikiYildizBtn: UIButton, ucYildizBtn: UIButton){
+        view.addSubview(birYildizBtn)
+        birYildizBtn.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 300, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: 0, height: 50)
+        
+        view.addSubview(ikiYildizBtn)
+        ikiYildizBtn.anchor(top: birYildizBtn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 20, paddingLeft: 20, paddingRight: -20, width: 0, height: 50)
+        
+        view.addSubview(ucYildizBtn)
+        ucYildizBtn.anchor(top: ikiYildizBtn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: 0, height: 50)
+        
+    }
+    func baslaKonum(view: UIView, baslaBtn: UIButton){
+        view.addSubview(baslaBtn)
+        baslaBtn.anchor(top: view.topAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 300, paddingBottom: 0, paddingLeft: 20, paddingRight: -20, width: 0, height: 50)
+    }
+    
+    
+    
+}
 
 extension UIView {
     
@@ -39,7 +84,6 @@ extension UIView {
         if let centerx = centerx {
             self.centerXAnchor.constraint(equalTo: centerx).isActive = true
         }
-        
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
@@ -50,5 +94,4 @@ extension UIView {
     }
     
 }
-
 

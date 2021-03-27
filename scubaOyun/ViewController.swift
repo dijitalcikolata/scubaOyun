@@ -8,6 +8,41 @@
 import UIKit
 
 class ViewController: UIViewController {
+    //***
+    
+    let soruLbl: UILabel = {
+       let lbl = UILabel()
+        lbl.text = "Label label Label label Label label Label label Label label Label label Label label Label label Label label Label label Label label Label label Label label Label label "
+        lbl.textAlignment = .left
+        lbl.numberOfLines = 0
+        return lbl
+    }()
+    let cevapAbtn: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("cevapA", for: .normal)
+        btn.backgroundColor = UIColor.systemOrange
+        return btn
+    }()
+    let cevapBbtn: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("cevapB", for: .normal)
+        btn.backgroundColor = UIColor.systemOrange
+        return btn
+    }()
+    let cevapCbtn: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("cevapC", for: .normal)
+        btn.backgroundColor = UIColor.systemOrange
+        return btn
+    }()
+    let cevapDbtn: UIButton = {
+       let btn = UIButton()
+        btn.setTitle("cevapD", for: .normal)
+        btn.backgroundColor = UIColor.systemOrange
+        return btn
+    }()
+    
+    //***
     var buyuyenView : UIView = {
         let vie = UIView()
         vie.translatesAutoresizingMaskIntoConstraints = false
@@ -71,12 +106,9 @@ class ViewController: UIViewController {
     var say = 0
     
     let konumlar = Konumlar()
+    let animasyon = Animasyon()
     
-    @IBOutlet weak var soruLbl: UILabel!
-    @IBOutlet weak var cevapAbtn: UIButton!
-    @IBOutlet weak var cevapBbtn: UIButton!
-    @IBOutlet weak var cevapCbtn: UIButton!
-    @IBOutlet weak var cevapDbtn: UIButton!
+    
     @IBOutlet weak var sayimLbl: UILabel!
     @IBOutlet weak var cevapLbl: UILabel!
     @IBOutlet weak var naviBar: UINavigationBar!
@@ -110,9 +142,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         setGradientBackground()
         super.viewDidLoad()
+        
+        
+        
+        
+        
       //*
         
-        
+        view.addSubview(soruLbl)
+        view.addSubview(cevapAbtn)
+        view.addSubview(cevapBbtn)
+        view.addSubview(cevapCbtn)
+        view.addSubview(cevapDbtn)
         view.addSubview(buyuyenView)
         view.addSubview(logoImg)
         view.addSubview(muratImg)
@@ -125,17 +166,33 @@ class ViewController: UIViewController {
         view.addSubview(tamamBtn)
         view.addSubview(puanGosterLbl)
         
+        cevapAbtn.tag = 1
+        cevapBbtn.tag = 2
+        cevapCbtn.tag = 3
+        cevapDbtn.tag = 4
+        
+        cevapAbtn.addTarget(self, action:  #selector(ViewController.cavapSecim(_:)), for: .touchUpInside)
+        cevapBbtn.addTarget(self, action:  #selector(ViewController.cavapSecim(_:)), for: .touchUpInside)
+        cevapCbtn.addTarget(self, action:  #selector(ViewController.cavapSecim(_:)), for: .touchUpInside)
+        cevapDbtn.addTarget(self, action:  #selector(ViewController.cavapSecim(_:)), for: .touchUpInside)
+        
+        soruLbl.anchor(top: progressBar1.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 40, paddingBottom: 0, paddingLeft: 10, paddingRight: -10, width: 0, height: 0)
+        cevapAbtn.anchor(top: soruLbl.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 30, paddingBottom: 0, paddingLeft: 10, paddingRight: -10, width: 0, height: 0)
+        cevapBbtn.anchor(top: cevapAbtn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 10, paddingRight: -10, width: 0, height: 0)
+        cevapCbtn.anchor(top: cevapBbtn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 10, paddingRight: -10, width: 0, height: 0)
+        cevapDbtn.anchor(top: cevapCbtn.bottomAnchor, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, centerx: nil, paddingTop: 20, paddingBottom: 0, paddingLeft: 10, paddingRight: -10, width: 0, height: 0)
+        
         let boyX = Int(UIScreen.main.bounds.width)
         let boyY = Int(UIScreen.main.bounds.height)
         
-        konumlar.konumAnim(gelenImg: logoImg, X: boyX/2 - 100, Y: 100, W: 200, H: 155, gorunurluk: 0)
-        konumlar.konumAnim(gelenImg: muratImg, X: 1000, Y: 255, W: 100, H: 25, gorunurluk: 1)
-        konumlar.konumAnim(gelenImg: hasirciImg, X: -500, Y: 280, W: 100, H: 25, gorunurluk: 1)
-        konumlar.konumAnim(gelenImg: tamamImg, X: boyX/2 - 125, Y: boyY - 275, W: 250, H: 275, gorunurluk: 0)
-        konumlar.konumAnim(gelenImg: hayirImg, X: boyX/2 - 125, Y: boyY - 275, W: 250, H: 275, gorunurluk: 0)
-        konumlar.konumAnim(gelenImg: mukemmelImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
-        konumlar.konumAnim(gelenImg: oyunBittiImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
-        konumlar.konumAnim(gelenImg: sureBittiImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
+        animasyon.konumAnim(gelenImg: logoImg, X: boyX/2 - 100, Y: 100, W: 200, H: 155, gorunurluk: 0)
+        animasyon.konumAnim(gelenImg: muratImg, X: 1000, Y: 255, W: 100, H: 25, gorunurluk: 1)
+        animasyon.konumAnim(gelenImg: hasirciImg, X: -500, Y: 280, W: 100, H: 25, gorunurluk: 1)
+        animasyon.konumAnim(gelenImg: tamamImg, X: boyX/2 - 125, Y: boyY - 275, W: 250, H: 275, gorunurluk: 0)
+        animasyon.konumAnim(gelenImg: hayirImg, X: boyX/2 - 125, Y: boyY - 275, W: 250, H: 275, gorunurluk: 0)
+        animasyon.konumAnim(gelenImg: mukemmelImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
+        animasyon.konumAnim(gelenImg: oyunBittiImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
+        animasyon.konumAnim(gelenImg: sureBittiImg, X: boyX / 2 - 100, Y: boyY / 2 , W: 200, H: 45, gorunurluk: 0)
         
         
         tamamBtn.alpha = 0
@@ -201,7 +258,7 @@ class ViewController: UIViewController {
     //*****
     @objc func tamamBtn(_ sender : Any){
       
-        konumlar.geriAnimasyonsonucImg(hayirImg: hayirImg, evetImg: tamamImg, logoImg: logoImg, muratImg: muratImg, hasirciImg: hasirciImg, buyuyenView: buyuyenView, tamamBtn: tamamBtn, mukemmelImg: mukemmelImg, oyunBitti: oyunBittiImg, sureBittiImg : sureBittiImg)
+        animasyon.geriAnimasyonsonucImg(hayirImg: hayirImg, evetImg: tamamImg, logoImg: logoImg, muratImg: muratImg, hasirciImg: hasirciImg, buyuyenView: buyuyenView, tamamBtn: tamamBtn, mukemmelImg: mukemmelImg, oyunBitti: oyunBittiImg, sureBittiImg : sureBittiImg)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.navigationController?.popViewController(animated: true)
             print("kapat kız")
@@ -210,8 +267,8 @@ class ViewController: UIViewController {
     
     
     func dogruYanlis(gelenSonucImg : UIImageView, gelenTextImg : UIImageView, gelenColor : UIColor){
-        konumlar.animasyonBasla(buyuyenView: buyuyenView, view: view)
-        konumlar.butonHareket(sonucImg: gelenSonucImg, sonucTextImg: gelenTextImg, logoImg: logoImg, muratImg: muratImg, hasirciImg: hasirciImg, buyuyenView : buyuyenView, color : gelenColor, tamamBtn : tamamBtn, puanGosterLbl: puanGosterLbl)
+        animasyon.animasyonBasla(buyuyenView: buyuyenView, view: view)
+        animasyon.butonHareket(sonucImg: gelenSonucImg, sonucTextImg: gelenTextImg, logoImg: logoImg, muratImg: muratImg, hasirciImg: hasirciImg, buyuyenView : buyuyenView, color : gelenColor, tamamBtn : tamamBtn, puanGosterLbl: puanGosterLbl)
         
         
     }
@@ -276,7 +333,7 @@ class ViewController: UIViewController {
         }
 
    
-    @IBAction func cavapSecim(_ sender: UIButton) {
+    @objc func cavapSecim(_ sender: UIButton) {
         sender.shake()
         secilenButton = sender.tag
         if secilenButton == 1 {cevapAbtn.backgroundColor = .green}
