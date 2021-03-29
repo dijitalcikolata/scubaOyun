@@ -114,6 +114,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var naviBar: UINavigationBar!
     
     @IBOutlet weak var progressBar1: ProgressBar!
+    @IBOutlet weak var diziLbl: UILabel!
     
     
     var countFired: CGFloat = 0
@@ -474,6 +475,8 @@ class ViewController: UIViewController {
             let bok = db.readOnlyOne(id: soruDizi[cevapID], tablo: "\(tabloGir)")
         
         
+            diziLbl.text = "\(tabloGir) : \(soruDizi)"
+            
             if bok[5] == "A"{cevapNumarasi = 1}
             else if bok[5] == "B"{cevapNumarasi = 2}
             else if bok[5] == "C"{cevapNumarasi = 3}

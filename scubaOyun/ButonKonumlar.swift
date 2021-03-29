@@ -36,9 +36,99 @@ class Animasyon{
                 }, completion: { (finished) in
                     //sender.tag = 1;
                 })
+       
+        
+        
         
     }
-    //
+    //********
+    func gecisAnimasyon(buyuyenView : UIView, view : UIView, logoImg : UIImageView, secim : Int, scubaImg :UIImageView){
+        
+        
+        buyuyenView.frame = CGRect(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height/2, width: 10, height: 10)
+        
+        logoImg.frame = CGRect(x: -500, y: UIScreen.main.bounds.size.height/2 - 77, width: 200, height: 155)
+        logoImg.alpha = 1
+        
+        scubaImg.frame = CGRect(x: 500, y: 150, width: 200, height: 60)
+        scubaImg.alpha = 1
+        
+                UIView.animate(withDuration: 1.0, animations: {
+               
+                    buyuyenView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+                    logoImg.frame = CGRect(x: UIScreen.main.bounds.size.width/2 - 100, y: UIScreen.main.bounds.size.height/2 - 77, width: 200, height: 155)
+                    scubaImg.frame = CGRect(x: UIScreen.main.bounds.size.width/2 - 100, y: 150, width: 200, height: 60)
+                       
+
+                }, completion: { (finished) in
+                    UIView.animate(withDuration: 1, delay: 0.2) {
+                        scubaImg.frame = CGRect(x: 500, y: 150, width: 200, height: 60)
+                    }
+                   UIView.animate(withDuration: 2, delay: 0.2) {
+                    logoImg.alpha = 0
+
+                    buyuyenView.frame = CGRect(x: -500, y: 0, width: view.frame.width, height: view.frame.height)
+                    
+                
+                   }
+                })
+       
+        
+        if secim == 0{kategoriAnimas()}
+        if secim == 1{konuAnimas()}
+        if secim == 2{konuAnimas()}
+        if secim == 3{konuAnimas()}
+        
+        }
+        
+    
+    func kategoriAnimas(){
+        
+        birYildizBtn.alpha = 0
+        ikiYildizBtn.alpha = 0
+        ucYildizBtn.alpha = 0
+        UIView.animate(withDuration: 1, delay: 1) {
+        
+            birYildizBtn.alpha = 1
+            ikiYildizBtn.alpha = 1
+            ucYildizBtn.alpha = 1
+    
+        }
+    }
+    func konuAnimas(){
+        
+        konu1Btn.alpha = 0
+        konu21Btn.alpha = 0
+        konu22Btn.alpha = 0
+        konu23Btn.alpha = 0
+        konu24Btn.alpha = 0
+        konu25Btn.alpha = 0
+        konu26Btn.alpha = 0
+        konu31Btn.alpha = 0
+        konu32Btn.alpha = 0
+        konu33Btn.alpha = 0
+        konu34Btn.alpha = 0
+        konu35Btn.alpha = 0
+        konu36Btn.alpha = 0
+        UIView.animate(withDuration: 1, delay: 1) {
+            konu1Btn.alpha = 1
+            konu21Btn.alpha = 1
+            konu22Btn.alpha = 1
+            konu23Btn.alpha = 1
+            konu24Btn.alpha = 1
+            konu25Btn.alpha = 1
+            konu26Btn.alpha = 1
+            konu31Btn.alpha = 1
+            konu32Btn.alpha = 1
+            konu33Btn.alpha = 1
+            konu34Btn.alpha = 1
+            konu35Btn.alpha = 1
+            konu36Btn.alpha = 1
+        }
+        
+    }
+    
+    //*******
     func butonHareket(sonucImg : UIImageView, sonucTextImg : UIImageView, logoImg : UIImageView, muratImg : UIImageView, hasirciImg : UIImageView, buyuyenView : UIView, color : UIColor, tamamBtn : UIButton, puanGosterLbl : UILabel){
        
         buyuyenView.backgroundColor = color
@@ -48,8 +138,6 @@ class Animasyon{
             sonucTextImg.alpha = 1
             tamamBtn.alpha = 1
             puanGosterLbl.alpha = 1
-            
-        
         }
         UIView.animate(withDuration: 3, delay: 1.0) {
             logoImg.alpha = 0.7

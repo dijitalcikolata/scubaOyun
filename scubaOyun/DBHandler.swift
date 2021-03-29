@@ -10,7 +10,7 @@ import Foundation
 import SQLite3
 
 class Databasehandler {
-    let databaseName : String = "scubaTumSorular"
+    let databaseName : String = "scubaTumV1"
     let databaseExtension : String = "db"
     var db : OpaquePointer! = nil
     var soruArray = [String]()
